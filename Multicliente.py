@@ -9,6 +9,8 @@ def handle_client(client_socket, client_address):
         if not data:
             break
         print(f"Recibido desde {client_address[0]}:{client_address[1]}: {data.decode()}")
+        response = f"Mensaje recibido. Tu mensaje: {data.decode()}"
+        client_socket.sendall(response.encode())
         print(f"Conexión cerrada desde {client_address[0]}:{client_address[1]}")
         client_socket.close()
 
